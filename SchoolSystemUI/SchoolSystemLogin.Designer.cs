@@ -87,6 +87,7 @@
             // 
             this.SchoolSystemLoginPasswordTextBox.Location = new System.Drawing.Point(242, 178);
             this.SchoolSystemLoginPasswordTextBox.Name = "SchoolSystemLoginPasswordTextBox";
+            this.SchoolSystemLoginPasswordTextBox.PasswordChar = '*';
             this.SchoolSystemLoginPasswordTextBox.Size = new System.Drawing.Size(324, 31);
             this.SchoolSystemLoginPasswordTextBox.TabIndex = 5;
             // 
