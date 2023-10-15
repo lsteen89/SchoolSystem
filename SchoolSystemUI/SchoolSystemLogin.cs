@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
+using SchoolSystemLibary;
+using SchoolSystemLibary.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SchoolSystemUI
 {
@@ -37,6 +41,24 @@ namespace SchoolSystemUI
 
         private void SchoolSystemLoginButton_Click(object sender, EventArgs e)
         {
+            string loginName = SchoolSystemLoginUserTextBox.Text;
+            string pw = SchoolSystemLoginPasswordTextBox.Text;
+
+            if (loginName.Length > 0 && pw.Length > 0)
+            {
+                SchoolSystemLibary.LoginManager loginManager = new SchoolSystemLibary.LoginManager();
+                bool ValidLogin = loginManager.AuthenticateUser(loginName, pw);
+                if (ValidLogin)
+                {
+                    ExitbuttonClicked = true;
+                    this.Close();
+                }
+
+                else
+                    MessageBox.Show("Felaktiga uppgifter!");
+            }
+            else
+                MessageBox.Show("Vänligen se över inloggningsuppgifter");
 
         }
     }
