@@ -1,12 +1,13 @@
-﻿  IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'SchoolSystem')
-  BEGIN
-    CREATE DATABASE SchoolSystem
+﻿
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'SchoolSystem')
+BEGIN
+CREATE DATABASE SchoolSystem
 
 
-    END
-    GO
-       USE SchoolSystem
-    GO
+END
+GO
+    USE SchoolSystem
+GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Students' and xtype='U')
 BEGIN
@@ -16,7 +17,8 @@ BEGIN
 		LastName nvarchar(30) NOT NULL,
 		Persoid VARCHAR(20) NOT NULL UNIQUE,
 		DateOfBirth datetime NOT NULL,
-		YearGrade int NOT NULL,
+		YearGrade VARCHAR(10) NOT NULL,
+		TeacherPersoid VARCHAR(20) NOT NULL
 		PRIMARY KEY(Persoid, Id)
     )
 END
@@ -35,11 +37,11 @@ END
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='YearGrade' and xtype='U')
 BEGIN
     CREATE TABLE YearGrade (
-        YearGrade varchar(10) PRIMARY KEY,
-		StudentsEnrolled int,
+        YearGrade varchar(10),
+		Role int,
 		StartDate datetime NOT NULL,
 		EndDate datetime,
-		Persoid VARCHAR(20) NOT NULL UNIQUE
+		Persoid VARCHAR(20) NOT NULL PRIMARY KEY
     )
 END
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Subjects' and xtype='U')
@@ -73,7 +75,7 @@ BEGIN
     CREATE TABLE Users (
         Id INT IDENTITY (1, 1),
         Persoid VARCHAR(20) NOT NULL UNIQUE,
-		LoginName varchar(50) NOT NULL,
+		LoginName varchar(50) NOT NULL UNIQUE,
 		Password nvarchar(100) NOT NULL,
 		Role int NOT NULL,
 		Regsign varchar(10) NOT NULL,
@@ -90,5 +92,84 @@ ALTER TABLE YearGrade ADD FOREIGN KEY (YearGrade) REFERENCES Subjects(YearGrade)
 ALTER TABLE Grade ADD FOREIGN KEY (SubjectName) REFERENCES Subjects(SubjectName)
 ALTER TABLE Users ADD FOREIGN KEY (Persoid) REFERENCES Students(Persoid)
 ALTER TABLE Users ADD FOREIGN KEY (Persoid) REFERENCES Teachers(Persoid)
-
 */
+
+/*
+CREATE PROCEDURE CreateUser 
+       @FirstName           NVARCHAR(30),
+       @LastName            NVARCHAR(30),
+       @Password			varchar(100),
+	   @DateOfBirth			datetime,
+	   @YearGrade			Varchar(10),
+       @Role                int,
+	   @Teacher				Varchar(20)
+
+AS 
+BEGIN 
+     SET NOCOUNT ON 
+	 
+	 
+	 declare @persoid varchar(10) = LEFT(CONVERT(VARCHAR(36), NEWID()), 10)
+	 while exists ((select NULL from Users where LoginName = @persoid))
+	 BEGIN
+		SET @persoid = LEFT(CONVERT(VARCHAR(36), NEWID()), 10)
+	 END
+
+     INSERT INTO Users
+	 SELECT
+		@persoid,
+        CONCAT(SUBSTRING(@FirstName, 1, 3), (SUBSTRING(@LastName, 1, 3))), --LOGINNAME
+        @Password,
+        @Role,
+		'Admin', --REGSIGN
+		getdate() --TIME
+          
+
+	if(@Role = 1) --Role 1 = Teacher
+	BEGIN
+	INSERT INTO Teachers
+		SELECT
+			@FirstName,
+			@LastName,
+			@persoid,
+			@DateOfBirth,
+			@YearGrade
+
+	INSERT INTO YearGrade
+		SELECT
+			@YearGrade,
+			@Role,
+			GETDATE(),
+			NULL,
+			@persoid
+	END
+
+	ELSE -- ELSE STUDENT
+	BEGIN
+	INSERT INTO Students
+		SELECT
+			@FirstName,
+			@LastName,
+			@persoid,
+			@DateOfBirth,
+			@YearGrade,
+			@Teacher
+
+	INSERT INTO YearGrade
+		SELECT
+			@YearGrade,
+			@Role,
+			GETDATE(),
+			NULL,
+			@persoid
+	END
+		
+		 
+END 
+
+GO
+*/
+
+--exec CreateUser Linus, 'moller', test123, '20090101', 1, 1, null
+--exec CreateUser Karl, 'moller', test123, '20090101', 1, 2, 'F168A1EE-0'
+
