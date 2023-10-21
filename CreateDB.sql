@@ -77,7 +77,7 @@ BEGIN
         Persoid VARCHAR(20) NOT NULL UNIQUE,
 		LoginName varchar(50) NOT NULL UNIQUE,
 		Password nvarchar(100) NOT NULL,
-		Role int NOT NULL,
+		Roles varchar(50) NOT NULL,
 		Regsign varchar(10) NOT NULL,
 		Regtime datetime NOT NULL
 		PRIMARY KEY(Id, persoid)

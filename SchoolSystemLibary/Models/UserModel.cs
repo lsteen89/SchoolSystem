@@ -12,10 +12,20 @@ namespace SchoolSystemLibary.Models
         public int Id { get; set; }
         public string Password { get; set; }
         public string LoginName { get; set; }
-        public string Role { get; set; }
+        public string Roles { get; set; }
         public string Persoid { get; set; }
         public string Regsign { get; set; }
         public DateTime Regtime { get; set; }
-
+        public List<string> RoleList
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Roles))
+                {
+                    return new List<string>();
+                }
+                return Roles.Split(',').Select(role => role.Trim()).ToList();
+            }
+        }
     }
 }

@@ -64,5 +64,13 @@ namespace SchoolSystemUI
             else
                 MessageBox.Show("Vänligen se över inloggningsuppgifter");
         }
+        private void SchoolSystemLoginPasswordTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Prevent the "ding" sound
+                SchoolSystemLoginButton.PerformClick(); // Simulate a button click
+            }
+        }
     }
 }

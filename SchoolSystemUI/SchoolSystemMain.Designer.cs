@@ -55,7 +55,6 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "SchoolSystemMain";
             this.Text = "School system ©";
-            this.Load += new System.EventHandler(this.SchoolSystemMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

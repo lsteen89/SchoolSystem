@@ -90,6 +90,7 @@
             this.SchoolSystemLoginPasswordTextBox.PasswordChar = '*';
             this.SchoolSystemLoginPasswordTextBox.Size = new System.Drawing.Size(324, 31);
             this.SchoolSystemLoginPasswordTextBox.TabIndex = 5;
+            this.SchoolSystemLoginPasswordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SchoolSystemLoginPasswordTextBox_KeyPress);
             // 
             // SchoolSystemLoginButton
             // 
