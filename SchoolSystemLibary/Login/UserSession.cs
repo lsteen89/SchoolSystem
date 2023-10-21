@@ -10,33 +10,21 @@ namespace SchoolSystemLibary.Login
 {
     public class UserSession
     {
-        public SecureString LoginName { get; set; }
-        public SecureString Role { get; set; }
-        public SecureString Persoid { get; set; }
-    }
+        public string Username { get; set; }
+        public string Roles { get; set; }
+        public string Persoid{ get; set; }
 
-    public class UserSessionManager
-    {
-        public UserSession CreateCurrentUserSession(UserModel userModel)
+        public List<string> RoleList
         {
-            UserSession currentUserSession = new UserSession
+            get
             {
-                LoginName = CreateSecureString(userModel.LoginName),
-                Role = CreateSecureString(userModel.Role),
-                Persoid = CreateSecureString(userModel.Persoid)
-            };
-            return currentUserSession;
-        }
-
-        private SecureString CreateSecureString(string value)
-        {
-            SecureString secureString = new SecureString();
-            foreach (char c in value)
-            {
-                secureString.AppendChar(c);
+                if (string.IsNullOrEmpty(Roles))
+                {
+                    return new List<string>();
+                }
+                return Roles.Split(',').Select(role => role.Trim()).ToList();
             }
-            secureString.MakeReadOnly();
-            return secureString;
         }
     }
+
 }

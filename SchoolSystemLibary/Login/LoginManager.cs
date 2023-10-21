@@ -34,24 +34,15 @@ namespace SchoolSystemLibary.Login
                         UserModel UserModel = new UserModel
                         {
                             LoginName = user.LoginName,
-                            Role = user.Role,
+                            Roles = user.Roles,
                             Persoid = user.Persoid,
                         };
+                        UserSessionManager.Instance.SetUserSession(UserModel);
                         return user;
                     }
                 }
                 return null;
             }
-        }
-        private SecureString CreateSecureString(string value)
-        {
-            SecureString secureString = new SecureString();
-            foreach (char c in value)
-            {
-                secureString.AppendChar(c);
-            }
-            secureString.MakeReadOnly();
-            return secureString;
         }
     }
 }
