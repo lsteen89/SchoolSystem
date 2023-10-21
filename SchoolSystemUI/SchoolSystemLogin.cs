@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dapper;
-using SchoolSystemLibary;
+using SchoolSystemLibary.Login;
 using SchoolSystemLibary.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace SchoolSystemUI
 {
@@ -46,20 +47,22 @@ namespace SchoolSystemUI
 
             if (loginName.Length > 0 && pw.Length > 0)
             {
-                SchoolSystemLibary.LoginManager loginManager = new SchoolSystemLibary.LoginManager();
-                bool ValidLogin = loginManager.AuthenticateUser(loginName, pw);
-                if (ValidLogin)
+                LoginManager loginManager = new LoginManager();
+                UserModel authenticatedUser = loginManager.AuthenticateUser(loginName, pw);
+
+                if (authenticatedUser != null)
                 {
                     ExitbuttonClicked = true;
-                    this.Close();
-                }
 
+                    this.Hide();
+                    SchoolSystemMain schoolSystemMain = new SchoolSystemMain();
+                    schoolSystemMain.Show();
+                }
                 else
                     MessageBox.Show("Felaktiga uppgifter!");
             }
             else
                 MessageBox.Show("Vänligen se över inloggningsuppgifter");
-
         }
     }
 }

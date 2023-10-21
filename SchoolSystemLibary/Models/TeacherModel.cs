@@ -36,5 +36,6 @@ namespace SchoolSystemLibary.Models
         /// What subjects does the teacher teach
         /// </summary>
         public List<SubjectModel> subjects = new List<SubjectModel>();
+        public string Email { get; set; }
     }
 }
