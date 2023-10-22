@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystemLibary", "SchoolSystemLibary\SchoolSystemLibary.csproj", "{68137978-28E7-433A-BD13-5B6E9FD81301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSystemLibary", "SchoolSystemLibary\SchoolSystemLibary.csproj", "{68137978-28E7-433A-BD13-5B6E9FD81301}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystemUI", "SchoolSystemUI\SchoolSystemUI.csproj", "{EB624A82-EFED-47C5-94F1-DE08E1179B9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSystemUI", "SchoolSystemUI\SchoolSystemUI.csproj", "{EB624A82-EFED-47C5-94F1-DE08E1179B9E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLCode", "SQLCode", "{92C0991C-9CBC-4C0A-9383-6885E08DE48D}"
 	ProjectSection(SolutionItems) = preProject
-		CreateDB.sql = CreateDB.sql
+		DatabaseScripts.sql = DatabaseScripts.sql
 	EndProjectSection
 EndProject
 Global
