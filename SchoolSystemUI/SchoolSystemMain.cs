@@ -32,5 +32,11 @@ namespace SchoolSystemUI
             */
 
         }
+
+        private void SchoolSystemMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            Application.Exit();
+        }
     }
 }

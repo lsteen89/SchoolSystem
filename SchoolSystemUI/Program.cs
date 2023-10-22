@@ -17,7 +17,7 @@ namespace SchoolSystemUI
             ApplicationConfiguration.Initialize();
 
             Application.Run(new SchoolSystemLogin());// For prod
-            Application.Run(new SchoolSystemMain());  //Debug
+           // Application.Run(new SchoolSystemMain());  //Debug
         }
     }
 }
