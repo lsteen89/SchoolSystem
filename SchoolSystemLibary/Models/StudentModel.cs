@@ -45,5 +45,6 @@ namespace SchoolSystemLibary.Models
         /// What subjects the student study
         /// </summary>
         public List<SubjectModel> Subjects { get; set; } = new List<SubjectModel>();
+    
     }
 }
