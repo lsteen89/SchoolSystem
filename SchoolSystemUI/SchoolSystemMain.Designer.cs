@@ -61,6 +61,7 @@
             this.MainUIClassSelectorComboBox.Name = "MainUIClassSelectorComboBox";
             this.MainUIClassSelectorComboBox.Size = new System.Drawing.Size(335, 33);
             this.MainUIClassSelectorComboBox.TabIndex = 2;
+            this.MainUIClassSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.MainUIClassSelectorComboBox_SelectedIndexChanged);
             // 
             // MainUIClassSelectorLabel
             // 

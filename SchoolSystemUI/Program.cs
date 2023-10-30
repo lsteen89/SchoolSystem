@@ -1,4 +1,5 @@
 using SchoolSystemLibary.Models;
+using Serilog;
 
 namespace SchoolSystemUI
 {
@@ -11,13 +12,17 @@ namespace SchoolSystemUI
         [STAThread]
         static void Main()
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("DapperQueries.txt")
+                .CreateLogger();
 
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
             Application.Run(new SchoolSystemLogin());// For prod
-           // Application.Run(new SchoolSystemMain());  //Debug
+            // Application.Run(new SchoolSystemMain());  //Debug
+            Log.CloseAndFlush(); // Close and flush the log when your application exits
         }
     }
 }
