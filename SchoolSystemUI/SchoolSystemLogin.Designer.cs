@@ -35,8 +35,9 @@
             this.SchoolSystemLoginForgotPWLinkedLabel = new System.Windows.Forms.LinkLabel();
             this.SchoolSystemLoginUserTextBox = new System.Windows.Forms.TextBox();
             this.SchoolSystemLoginPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.SchoolSystemLoginButton = new System.Windows.Forms.Button();
             this.SchoolSystemLoginExitButton = new System.Windows.Forms.Button();
+            this.SchoolSystemLoginButton = new System.Windows.Forms.Button();
+            this.DebugButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SchoolSystemLoginLabel
@@ -92,16 +93,6 @@
             this.SchoolSystemLoginPasswordTextBox.TabIndex = 5;
             this.SchoolSystemLoginPasswordTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SchoolSystemLoginPasswordTextBox_KeyPress);
             // 
-            // SchoolSystemLoginButton
-            // 
-            this.SchoolSystemLoginButton.Location = new System.Drawing.Point(242, 223);
-            this.SchoolSystemLoginButton.Name = "SchoolSystemLoginButton";
-            this.SchoolSystemLoginButton.Size = new System.Drawing.Size(129, 42);
-            this.SchoolSystemLoginButton.TabIndex = 6;
-            this.SchoolSystemLoginButton.Text = "Logga in";
-            this.SchoolSystemLoginButton.UseVisualStyleBackColor = true;
-            this.SchoolSystemLoginButton.Click += new System.EventHandler(this.SchoolSystemLoginButton_Click);
-            // 
             // SchoolSystemLoginExitButton
             // 
             this.SchoolSystemLoginExitButton.Location = new System.Drawing.Point(377, 223);
@@ -112,12 +103,33 @@
             this.SchoolSystemLoginExitButton.UseVisualStyleBackColor = true;
             this.SchoolSystemLoginExitButton.Click += new System.EventHandler(this.SchoolSystemLoginExitButton_Click);
             // 
+            // SchoolSystemLoginButton
+            // 
+            this.SchoolSystemLoginButton.Location = new System.Drawing.Point(242, 223);
+            this.SchoolSystemLoginButton.Name = "SchoolSystemLoginButton";
+            this.SchoolSystemLoginButton.Size = new System.Drawing.Size(129, 42);
+            this.SchoolSystemLoginButton.TabIndex = 6;
+            this.SchoolSystemLoginButton.Text = "Logga in";
+            this.SchoolSystemLoginButton.UseVisualStyleBackColor = true;
+            this.SchoolSystemLoginButton.Click += new System.EventHandler(this.SchoolSystemLoginButton_Click);
+            // 
+            // DebugButton
+            // 
+            this.DebugButton.Location = new System.Drawing.Point(534, 223);
+            this.DebugButton.Name = "DebugButton";
+            this.DebugButton.Size = new System.Drawing.Size(129, 42);
+            this.DebugButton.TabIndex = 8;
+            this.DebugButton.Text = "Debug";
+            this.DebugButton.UseVisualStyleBackColor = true;
+            this.DebugButton.Click += new System.EventHandler(this.DebugButton_Click);
+            // 
             // SchoolSystemLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(905, 458);
+            this.Controls.Add(this.DebugButton);
             this.Controls.Add(this.SchoolSystemLoginExitButton);
             this.Controls.Add(this.SchoolSystemLoginButton);
             this.Controls.Add(this.SchoolSystemLoginPasswordTextBox);
@@ -146,7 +158,8 @@
         private LinkLabel SchoolSystemLoginForgotPWLinkedLabel;
         private TextBox SchoolSystemLoginUserTextBox;
         private TextBox SchoolSystemLoginPasswordTextBox;
-        private Button SchoolSystemLoginButton;
         private Button SchoolSystemLoginExitButton;
+        private Button SchoolSystemLoginButton;
+        private Button DebugButton;
     }
 }

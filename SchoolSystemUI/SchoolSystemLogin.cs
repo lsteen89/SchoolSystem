@@ -72,5 +72,30 @@ namespace SchoolSystemUI
                 SchoolSystemLoginButton.PerformClick(); // Simulate a button click
             }
         }
+
+        private void DebugButton_Click(object sender, EventArgs e)
+        {
+            string loginName = "LINMOL";
+            string pw = SchoolSystemLoginPasswordTextBox.Text;
+
+            if (1==1)
+            {
+                LoginManager loginManager = new LoginManager();
+                UserModel authenticatedUser = loginManager.AuthenticateUser(loginName, pw);
+
+                if (authenticatedUser != null)
+                {
+                    ExitbuttonClicked = true;
+
+                    this.Hide();
+                    SchoolSystemMain schoolSystemMain = new SchoolSystemMain();
+                    schoolSystemMain.Show();
+                }
+                else
+                    MessageBox.Show("Felaktiga uppgifter!");
+            }
+            else
+                MessageBox.Show("Vänligen se över inloggningsuppgifter");
+        }
     }
 }

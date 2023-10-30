@@ -174,6 +174,7 @@ GO
 
 exec CreateUser Linus, 'moller', test123, '19750101','20200401', '1,3', '', '070-555 55 442'
 exec CreateUser Karl, Andersson, test123, '20090101', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Mathilda, Iscasson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
 */
 
 /*
@@ -219,3 +220,4 @@ GO
 --exec AddYearGrade '4A', '20230901', '20240601', 'Linmol'
 --exec AddYearGrade '4B', '20230901', '20240601', 'Linmol'
 --exec AddYearGrade '4A', '20230901', '20240601', 'KarAnd'
+--exec AddYearGrade '4b', '20230901', '20240601', 'MatIsc'
