@@ -75,13 +75,15 @@ namespace SchoolSystemUI
             // Retrieve the selected class or year grade from the combo box
             string selectedClass = MainUIClassSelectorComboBox.SelectedItem.ToString();
 
-            // Query the database or data source to get students for the selected class
+            // Query the database to get students for the selected class
             SqlExecutor sqlExecutor = new SqlExecutor(GlobalConfig.GetConnection().ConnectionString);
-            List<StudentModel> students = sqlExecutor.GetStudentInfo(Persoid, selectedClass);
 
-            // Populate the MainUIStudentListBox with the retrieved students
-            MainUIStudentListBox.Items.Clear(); // Clear the existing items
-            MainUIStudentListBox.Items.AddRange(students.ToArray());
+            List<StudentModel> studentModels = sqlExecutor.GetStudentInfo(Persoid, selectedClass);
+            List<DisplayStudent> displayStudents = studentModels
+                .Select(student => new DisplayStudent(student.FirstName, student.LastName))
+                .ToList();
+            MainUIStudentListBox.DataSource = displayStudents;
+            MainUIStudentListBox.DisplayMember = "FullName";
         }
     }
 }
