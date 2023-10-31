@@ -175,6 +175,8 @@ GO
 exec CreateUser Linus, 'moller', test123, '19750101','20200401', '1,3', '', '070-555 55 442'
 exec CreateUser Karl, Andersson, test123, '20090101', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
 exec CreateUser Mathilda, Iscasson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Bert, Ljung, test123, '20090103', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Klimpen, Svensson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
 */
 
 /*
@@ -192,7 +194,7 @@ BEGIN
 		  set @YearGradeID= LEFT(CONVERT(VARCHAR(36), NEWID()), 10)
 		 while exists ((select NULL from YearGrade where YearGrade = @YearGradeID))
 		 BEGIN
-			SET @YearGradeID = (select YearGradeid from YearGrade where lower(YearGrade) = lower(@YearGrade) and StartDate = @StartDate)
+			SET @YearGradeID = (select distinct YearGradeid from YearGrade where lower(YearGrade) = lower(@YearGrade) and StartDate = @StartDate)
 		 END
 	 END
 	 ELSE
@@ -201,7 +203,7 @@ BEGIN
 	 declare @roles varchar(50) = (select roles from Users where lower(LoginName) = lower(@LoginName))
 	 declare @MainTeacher int = case when @roles like '%3%' then 1 else 0 end	 
 	 declare @TeacherPersoid varchar(50) = case when @roles = '2' then (select persoid from YearGrade where lower(YearGrade) = lower(@YearGrade) and StartDate = @StartDate and MainTeacher = 1) else null end
-	 declare @persoid varchar(50) = (select Persoid from Users where lower(LoginName) = lower('Karmol'))
+	 declare @persoid varchar(50) = (select Persoid from Users where lower(LoginName) = lower(@LoginName))
 	       
 	INSERT INTO YearGrade
 		SELECT
@@ -221,3 +223,6 @@ GO
 --exec AddYearGrade '4B', '20230901', '20240601', 'Linmol'
 --exec AddYearGrade '4A', '20230901', '20240601', 'KarAnd'
 --exec AddYearGrade '4b', '20230901', '20240601', 'MatIsc'
+--exec AddYearGrade '4b', '20230901', '20240601', 'BerLju'
+--exec AddYearGrade '4b', '20230901', '20240601', 'KliSve'
+
