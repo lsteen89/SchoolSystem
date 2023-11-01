@@ -4,6 +4,8 @@ using SchoolSystemLibary.DataAccess;
 using SchoolSystemLibary.Login;
 using SchoolSystemLibary.Models;
 using System.Security;
+using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace SchoolSystemUI
 {
@@ -12,7 +14,7 @@ namespace SchoolSystemUI
         private string LoginName { get; }
         private List<string> Roles { get; }
         private string Persoid { get; }
-
+        private List<StudentModel> SelectedstudentModels { get; }
 
         public SchoolSystemMain()
         {
@@ -72,6 +74,7 @@ namespace SchoolSystemUI
 
         private void MainUIClassSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            MainUIStudentListBox.Items.Clear();
             // Retrieve the selected class or year grade from the combo box
             string selectedClass = MainUIClassSelectorComboBox.SelectedItem.ToString();
 
@@ -79,11 +82,24 @@ namespace SchoolSystemUI
             SqlExecutor sqlExecutor = new SqlExecutor(GlobalConfig.GetConnection().ConnectionString);
 
             List<StudentModel> studentModels = sqlExecutor.GetStudentInfo(Persoid, selectedClass);
-            List<DisplayStudent> displayStudents = studentModels
-                .Select(student => new DisplayStudent(student.FirstName, student.LastName))
-                .ToList();
-            MainUIStudentListBox.DataSource = displayStudents;
-            MainUIStudentListBox.DisplayMember = "FullName";
+            MainUIStudentListBox.Items.Add("Namn" + "\t\t" + "Personnummer");
+            foreach (var studentModel in studentModels)
+                MainUIStudentListBox.Items.Add(studentModel.FirstName + " " + studentModel.LastName + " \t" + studentModel.DateOfBirth.Substring(1, 6) + "-" + studentModel.DateOfBirth.Substring(6, 4));
+        }
+
+        private void MainUIStudentListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MainUIStudentListBox.SelectedIndex == 0)
+            {
+                // Deselect the first item
+                MainUIStudentListBox.ClearSelected();
+            }
+        }
+
+        private void MainUIStudentListBox_DoubleClick(object sender, EventArgs e)
+        {
+            string pnumid = Regex.Replace(MainUIStudentListBox.SelectedItem.ToString(), @"\D", "");
+            //Todo: Match this against the studentmodel, get selected student info and pass into the studentpopup.
         }
     }
 }
