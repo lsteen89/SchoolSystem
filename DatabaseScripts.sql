@@ -16,7 +16,7 @@ BEGIN
         FirstName nvarchar(30) NOT NULL,
 		LastName nvarchar(30) NOT NULL,
 		Persoid VARCHAR(20) NOT NULL UNIQUE,
-		DateOfBirth datetime NOT NULL,
+		DateOfBirth varchar(12) NOT NULL UNIQUE,
 		Enrolldate datetime not null,
 		ParentPhone varchar(50) NOT NULL,
 		ParentEmail varchar(100) NOT NULL,
@@ -172,11 +172,11 @@ END
 
 GO
 
-exec CreateUser Linus, 'moller', test123, '19750101','20200401', '1,3', '', '070-555 55 442'
-exec CreateUser Karl, Andersson, test123, '20090101', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Mathilda, Iscasson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Bert, Ljung, test123, '20090103', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Klimpen, Svensson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Linus, 'moller', test123, '7501015767','20200401', '1,3', '', '070-555 55 442'
+exec CreateUser Karl, Andersson, test123, '0901012341', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Mathilda, Iscasson, test123, '0901024567', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Bert, Ljung, test123, '0901034399', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+exec CreateUser Klimpen, Svensson, test123, '0901024390	', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
 */
 
 /*
