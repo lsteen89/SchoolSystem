@@ -13,7 +13,7 @@ namespace SchoolSystemUI
     public partial class StudentPopUp : Form
     {
         public StudentPopUp()
-        {
+    {
             InitializeComponent();
         }
     }

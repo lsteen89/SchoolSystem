@@ -55,6 +55,7 @@ namespace SchoolSystemUI
 
         private void MainUIClassSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            MainUIStudentListBox.Items.Clear();
             // Retrieve the selected class or year grade from the combo box
             string selectedClass = MainUIClassSelectorComboBox.SelectedItem.ToString();
 

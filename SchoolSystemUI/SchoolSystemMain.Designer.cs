@@ -41,14 +41,14 @@
             this.MainWelcomeLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.MainWelcomeLabel.Location = new System.Drawing.Point(44, 67);
             this.MainWelcomeLabel.Name = "MainWelcomeLabel";
-            this.MainWelcomeLabel.Size = new System.Drawing.Size(101, 25);
+            this.MainWelcomeLabel.Size = new System.Drawing.Size(126, 31);
             this.MainWelcomeLabel.TabIndex = 0;
             this.MainWelcomeLabel.Text = "Welcome";
             // 
             // MainUIStudentListBox
             // 
             this.MainUIStudentListBox.FormattingEnabled = true;
-            this.MainUIStudentListBox.ItemHeight = 25;
+            this.MainUIStudentListBox.ItemHeight = 30;
             this.MainUIStudentListBox.Location = new System.Drawing.Point(689, 67);
             this.MainUIStudentListBox.Name = "MainUIStudentListBox";
             this.MainUIStudentListBox.Size = new System.Drawing.Size(629, 504);
@@ -60,7 +60,7 @@
             this.MainUIClassSelectorComboBox.FormattingEnabled = true;
             this.MainUIClassSelectorComboBox.Location = new System.Drawing.Point(689, 635);
             this.MainUIClassSelectorComboBox.Name = "MainUIClassSelectorComboBox";
-            this.MainUIClassSelectorComboBox.Size = new System.Drawing.Size(335, 33);
+            this.MainUIClassSelectorComboBox.Size = new System.Drawing.Size(335, 38);
             this.MainUIClassSelectorComboBox.TabIndex = 2;
             this.MainUIClassSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.MainUIClassSelectorComboBox_SelectedIndexChanged);
             // 
@@ -69,13 +69,13 @@
             this.MainUIClassSelectorLabel.AutoSize = true;
             this.MainUIClassSelectorLabel.Location = new System.Drawing.Point(689, 599);
             this.MainUIClassSelectorLabel.Name = "MainUIClassSelectorLabel";
-            this.MainUIClassSelectorLabel.Size = new System.Drawing.Size(125, 25);
+            this.MainUIClassSelectorLabel.Size = new System.Drawing.Size(156, 31);
             this.MainUIClassSelectorLabel.TabIndex = 3;
             this.MainUIClassSelectorLabel.Text = "Välj årskurs";
             // 
             // SchoolSystemMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1371, 750);

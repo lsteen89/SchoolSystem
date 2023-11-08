@@ -20,7 +20,7 @@ namespace SchoolSystemLibary.Models
         /// <summary>
         /// Unique person ID
         /// </summary>
-        public string PersonId { get; set; }
+        public string Persoid { get; set; }
         /// <summary>
         /// Person date of birth
         /// </summary>
@@ -40,7 +40,7 @@ namespace SchoolSystemLibary.Models
         /// <summary>
         /// When student enrolled at school
         /// </summary>
-        public DateTime Enrolled { get; set; }
+        public DateTime Enrolldate { get; set; }
         /// <summary>
         /// What subjects the student study
         /// </summary>
