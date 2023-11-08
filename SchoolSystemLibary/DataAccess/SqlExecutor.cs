@@ -33,7 +33,7 @@ namespace SchoolSystemLibary.DataAccess
                 FROM Students
                 JOIN Yeargrade ON Students.Persoid = Yeargrade.Persoid
                 WHERE Yeargrade.TeacherPersoid = @Persoid
-                AND Yeargrade.Yeargrade = @Yeargrade 
+                AND Yeargrade.YearGradeName = @Yeargrade 
             ";
 
                 var students = connection.Query<StudentModel>(sqlQuery, new { Persoid = persoid, Yeargrade = yeargrade}).ToList();
@@ -44,7 +44,7 @@ namespace SchoolSystemLibary.DataAccess
         public IEnumerable<string> GetAvailableYearGrades(string persoid)
         {
             string sqlQuery = @"
-            SELECT DISTINCT YearGrade 
+            SELECT DISTINCT YearGradeName       
             FROM YearGrade 
             WHERE Persoid = @Persoid
             ";

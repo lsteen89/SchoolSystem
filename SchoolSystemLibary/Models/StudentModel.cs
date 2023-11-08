@@ -24,7 +24,7 @@ namespace SchoolSystemLibary.Models
         /// <summary>
         /// Person date of birth
         /// </summary>
-        public DateTime DateOfBirthDate { get; set; }
+        public string DateOfBirth { get; set; }
         /// <summary>
         /// Students current year grade
         /// </summary>

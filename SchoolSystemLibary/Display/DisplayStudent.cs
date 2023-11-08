@@ -8,9 +8,9 @@ public class DisplayStudent
 {
     public string FullName { get; set; }
 
-    public DisplayStudent(string firstName, string lastName)
+    public DisplayStudent(string firstName, string lastName, string DateOfBirth)
     {
-        FullName = $"{firstName} {lastName}";
+        FullName = $"{firstName} {lastName} \t {DateOfBirth}";
     }
 
     public override string ToString()
