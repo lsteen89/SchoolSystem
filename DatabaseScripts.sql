@@ -13,7 +13,8 @@ BEGIN
         FirstName nvarchar(30) NOT NULL,
 		LastName nvarchar(30) NOT NULL,
 		Persoid VARCHAR(20) NOT NULL UNIQUE,
-		DateOfBirth datetime NOT NULL,
+		Century varchar(2) NOT NULL,
+		DateOfBirth varchar(12) NOT NULL UNIQUE,
 		Enrolldate datetime not null,
 		ParentPhone varchar(50),
 		ParentEmail varchar(100),
@@ -215,11 +216,19 @@ BEGIN
 END 
 
 
-exec CreateUser Linus, 'moller', test123, '19750101','20200401', '1,3', '', '070-555 55 442'
-exec CreateUser Karl, Andersson, test123, '20090101', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Mathilda, Iscasson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Bert, Ljung, test123, '20090103', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
-exec CreateUser Klimpen, Svensson, test123, '20090102', '20210901', '2', 'a.Andersson@telia.se' , '0521-221065'
+
+exec CreateUser 'Linus', 'Möller', test123, '19750101-5556','20010401', 3, '', '070111111'
+exec CreateUser 'Sonja', 'Ek', test123, '19750101-5466','20010401', 3, '', '08191919'
+exec CreateUser 'Anton', 'Möller', test123, '19750101-8900','20220910', 1, '', '0702-444-555-4'
+exec CreateUser 'Åke', 'Nordin', test123, '20090510-1213', '20210901', '2', 'a.nordin@telia.se' , '0521-221165'
+exec CreateUser 'Torleif', 'Andersson', test123, '20091031-5433', '20210901', '2', 't.Andersson@telia.se' , '0521-221065'
+exec CreateUser Bert, Ljung, test123, '20090103-5899', '20210901', '2', 'F.ljung@telia.se' , '0521-221265'
+exec CreateUser Klimpen, Svensson, test123, '20090102-0001', '20210901', '2', '' , ''
+exec CreateUser 'Nadja', 'Nilsson', test123, '20090102-1213', '20210901', '2', 'foraldrar@telia.se' , ''
+exec CreateUser 'Jörgen', 'Karlsson', test123, '20090102-1312', '20210901', '2', '' , ''
+exec CreateUser 'Dödgrävarn', 'N', test123, '20060402-1312', '20210901', '2', '' , '' 
+exec CreateUser 'Rebecka', 'Molin', test123, '20090401-5678', '20210901', '2', '','F.Molin@skunk.se' 
+exec CreateUser 'Lill-Erik', 'Linstett', test123, '20090401-1678', '20210901', '2', '','LillerikMamma@skunk.se' 
 */
 
 /*
