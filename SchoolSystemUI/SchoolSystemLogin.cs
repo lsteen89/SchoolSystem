@@ -75,7 +75,7 @@ namespace SchoolSystemUI
 
         private void DebugButton_Click(object sender, EventArgs e)
         {
-            string loginName = "LINMOL";
+            string loginName = "sonek";
             string pw = SchoolSystemLoginPasswordTextBox.Text;
 
             if (1==1)
