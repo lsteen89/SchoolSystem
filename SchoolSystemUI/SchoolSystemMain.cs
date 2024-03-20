@@ -1,9 +1,11 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using SchoolSystemLibary;
 using SchoolSystemLibary.DataAccess;
+using SchoolSystemLibary.Helper;
 using SchoolSystemLibary.Login;
 using SchoolSystemLibary.Models;
 using System.Security;
+using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SchoolSystemUI
@@ -14,6 +16,7 @@ namespace SchoolSystemUI
         private List<string> Roles { get; }
         private string Persoid { get; }
         private StudentModel studentModel;
+        private SqlExecutor sqlExecutor;
 
         public SchoolSystemMain()
         {
@@ -27,7 +30,8 @@ namespace SchoolSystemUI
 
 
             // Prepare SQL exectuors
-            SqlExecutor sqlExecutor = new SqlExecutor(GlobalConfig.GetConnection().ConnectionString); // Create an instance of SqlExecutor with the connection string
+            sqlExecutor = new SqlExecutor(GlobalConfig.GetConnection().ConnectionString); // Create an instance of SqlExecutor with the connection string
+            studentModel = new StudentModel();
 
             // Welcome message so that everyone feels welcome :-)
             DateTime currentTime = DateTime.Now;
@@ -80,6 +84,8 @@ namespace SchoolSystemUI
             if (MainUIStudentListBox.SelectedIndex == 0)
                 MainUIStudentListBox.SelectedIndex = 1;
 
+            StudentPopUpHelper studentHelper = new StudentPopUpHelper();
+            studentHelper.SetStudentPnumID(MainUIStudentListBox.Text);
 
             //Start StudentPopup to display selected student information
             StudentPopUp studentPopUp = new StudentPopUp();
